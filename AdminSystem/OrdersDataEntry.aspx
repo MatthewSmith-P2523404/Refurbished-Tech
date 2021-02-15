@@ -24,7 +24,7 @@
             <br />
             <asp:Label ID="Label1" runat="server" ForeColor="White" Text="lblerror"></asp:Label>
             <br />
-            <asp:Button ID="btnOK" runat="server" OnClick="Button1_Click" Text="OK" />
+            <asp:Button ID="BtnOK" runat="server" OnClick="BtnOK_Click1" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
         </div>
     </form>
