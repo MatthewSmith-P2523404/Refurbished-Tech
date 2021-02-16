@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order id
-        AnOrder.OrderId = txtOrderId.Text;
+        //AnOrder.OrderId = txtOrderId.Text;
         //capture the shipping method
         AnOrder.ShippingMethod = txtShippingMethod.Text;
         //store the order in the session object
