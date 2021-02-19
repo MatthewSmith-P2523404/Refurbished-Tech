@@ -54,7 +54,7 @@ namespace Testing2
         public void SalaryPropertyOK()
         {
             clsStaff AStaff = new clsStaff();
-            double TestSalary = 1000.50;
+            Double TestSalary = 1000.50;
             AStaff.Salary = TestSalary;
             Assert.AreEqual(AStaff.Salary, TestSalary);
         }
@@ -73,7 +73,7 @@ namespace Testing2
         {
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
             Assert.IsTrue(Found);
         }
@@ -84,9 +84,9 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.StaffID != 21)
+            if (AStaff.StaffID != 1)
             {
                 OK = false;
             }
@@ -99,7 +99,7 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
             if (AStaff.StaffName != "Matthew Smith")
             {
@@ -114,9 +114,9 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.StaffAddress != "A road")
+            if (AStaff.StaffAddress != "15 Something Road")
             {
                 OK = false;
             }
@@ -129,9 +129,9 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.StartDate != Convert.ToDateTime("07/03/2020"))
+            if (AStaff.StartDate != Convert.ToDateTime("29/01/2021"))
             {
                 OK = false;
             }
@@ -144,9 +144,9 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.Salary != 1400.50)
+            if (AStaff.Salary != 13000)
             {
                 OK = false;
             }
@@ -159,9 +159,9 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.Manager != true)
+            if (AStaff.Manager != false)
             {
                 OK = false;
             }
