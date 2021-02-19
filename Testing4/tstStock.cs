@@ -103,5 +103,47 @@ namespace Testing4
             Assert.AreEqual(testData, stockTest.visible);
         }
 
+        // TEST FIND METHOD
+
+        [TestMethod]
+        public void testFind()
+        {
+            // instantiate stock class
+            clsStock stockTest = new clsStock();
+            // prepare boolean for validating find method
+            Boolean found = false;
+            // product ID to search for
+            Int32 productId = 000001;
+            // test the Find() method
+            found = stockTest.Find(productId);
+            // should be found i.e. true
+            Assert.IsTrue(found);
+        }
+
+        // TEST FIND METHOD WITH HARDCODED DATA
+
+        [TestMethod]
+        public void testProductNoFound()
+        {
+            // instantiate stock class
+            clsStock stockTest = new clsStock();
+            // prepare boolean for validating find method
+            Boolean found = false;
+            // prepare boolean for validating if data is OK
+            Boolean OK = true;
+            // product ID to search for
+            Int32 productID = 000001;
+            // invoke the Find() method
+            found = stockTest.Find(productID);
+            // check the data
+            if (stockTest.productID != 000001)
+            {
+                OK = false;
+            }
+            // see if result is expected
+            Assert.IsTrue(OK);
+        }
+
+        // Insert other tests here tomorrow probably
     }
 }
