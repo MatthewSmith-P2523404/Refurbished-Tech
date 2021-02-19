@@ -56,7 +56,7 @@ namespace ClassLibrary
                 mStartDate = value;
             }
         }
-        public double Salary
+        public Double Salary
         {
             get
             {
@@ -81,14 +81,6 @@ namespace ClassLibrary
 
         public bool Find(int staffID)
         {
-            /** mStaffID = 21;
-             mStaffName = "Matthew Smith";
-             mStaffAddress = "A road";
-             mStartDate = Convert.ToDateTime("07/03/2020");
-             mSalary = 1400.50;
-             mManager = true;
-             return true;*/
-
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", StaffID);
             DB.Execute("sproc_tblStaff_FilterByStaffID");
