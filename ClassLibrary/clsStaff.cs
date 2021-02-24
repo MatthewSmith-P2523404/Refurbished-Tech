@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int staffID)
+        public bool Find(int StaffID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", StaffID);

@@ -116,7 +116,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AStaff.Find(StaffID);
-            if (AStaff.StaffAddress != "15 Something Road")
+            if (AStaff.StaffAddress != "15 Somewhere Road")
             {
                 OK = false;
             }
