@@ -14,7 +14,7 @@ public partial class _1Viewer : System.Web.UI.Page
 
         AnItem = (clsStock)Session["AnItem"];
 
-        Response.Write(AnItem.productID);
+        Response.Write(AnItem.productId);
         Response.Write(AnItem.productName);
         Response.Write(AnItem.productPrice);
         Response.Write(AnItem.modelNo);

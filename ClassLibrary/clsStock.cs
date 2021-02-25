@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class clsStock
     {
         // private member variables for class properties
-        private Int32 mProductID;
+        private Int32 mProductId;
         private string mProductName;
         private double mProductPrice;
         private string mModelNo;
@@ -18,15 +18,15 @@ namespace ClassLibrary
         private double mGrossWeight;
         private bool mVisible;
 
-        public Int32 productID
+        public Int32 productId
         {
             get
             {
-                return mProductID; // return the property
+                return mProductId; // return the property
             }
             set
             {
-                mProductID = value; // set the property
+                mProductId = value; // set the property
             }
         }
 
@@ -114,21 +114,36 @@ namespace ClassLibrary
         }
 
         // Find methods
-
+        // for productId
         public bool Find(int productId)
         {
-            // temporary data
-            mProductID = 000001;
-            mProductName = "Lenovo Thinkpad";
-            mProductPrice = 129.99;
-            mModelNo = "T440P";
-            mReleaseDate = Convert.ToDateTime("01/01/2014");
-            mNetWeight = 1.50;
-            mGrossWeight = 2.00;
-            mVisible = true;
+            clsDataConnection DB = new clsDataConnection();
 
-            // always return true
-            return true;
+            DB.AddParameter("@productId", productId);
+
+            DB.Execute("sproc_tblStock_FilterByProductId");
+
+            if (DB.Count == 1)
+            {
+                // copy from the database to private properties
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["productId"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["productName"]);
+                mProductPrice = Convert.ToDouble(DB.DataTable.Rows[0]["productPrice"]);
+                mReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[0]["releaseDate"]);
+                mModelNo = Convert.ToString(DB.DataTable.Rows[0]["modelNo"]);
+                mNetWeight = Convert.ToDouble(DB.DataTable.Rows[0]["netWeight"]);
+                mGrossWeight = Convert.ToDouble(DB.DataTable.Rows[0]["grossWeight"]);
+                mVisible = Convert.ToBoolean(DB.DataTable.Rows[0]["visible"]);
+
+                // return true if everything worked OK
+                return true;
+            }
+
+            else
+            {
+                // return false if the item wasn't found
+                return false;
+            }
         }
     }
 }

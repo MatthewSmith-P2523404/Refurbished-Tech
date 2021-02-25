@@ -25,12 +25,12 @@ namespace Testing4
 
         // test the "Product ID" property
         [TestMethod]
-        public void testProductID()
+        public void testProductId()
         {
             clsStock stockTest = new clsStock();
             Int32 testData = 1;
-            stockTest.productID = testData;
-            Assert.AreEqual(testData, stockTest.productID);
+            stockTest.productId = testData;
+            Assert.AreEqual(testData, stockTest.productId);
         }
 
         // test the "Product Name" property
@@ -113,7 +113,7 @@ namespace Testing4
             // prepare boolean for validating find method
             Boolean found = false;
             // product ID to search for
-            Int32 productId = 000001;
+            Int32 productId = 1;
             // test the Find() method
             found = stockTest.Find(productId);
             // should be found i.e. true
@@ -132,11 +132,11 @@ namespace Testing4
             // prepare boolean for validating if data is OK
             Boolean OK = true;
             // product ID to search for
-            Int32 productID = 000001;
+            Int32 productId = 1;
             // invoke the Find() method
-            found = stockTest.Find(productID);
+            found = stockTest.Find(productId);
             // check the data
-            if (stockTest.productID != 000001)
+            if (stockTest.productId != 1)
             {
                 OK = false;
             }
@@ -144,6 +144,5 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
 
-        // Insert other tests here tomorrow probably
     }
 }
