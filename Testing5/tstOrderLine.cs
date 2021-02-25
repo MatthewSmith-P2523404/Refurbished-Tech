@@ -58,5 +58,126 @@ namespace Testing5
             AnOrderLine.Available = TestData;
             Assert.AreEqual(AnOrderLine.Available, TestData);
         }
+        [TestMethod]
+        //testing the find method
+        public void FindMethodOK()
+        {
+            //create an instance of the class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //test to see if result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void OrderIdFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //check the order id
+            if (AnOrderLine.OrderId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ProductIdFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //check the product id
+            if (AnOrderLine.ProductId != "abc123")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void PriceFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //check the price
+            if (AnOrderLine.Price != 15.05)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void QuantityFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //check the quantity
+            if (AnOrderLine.Quantity != 2)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void AvailableFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderId);
+            //check available
+            if (AnOrderLine.Available != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+       
     }
 }
