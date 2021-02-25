@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnItem = new clsStock();
 
         // fetch data from forms for each field
-        AnItem.productID = Convert.ToInt32(txtProductId.Text);
+        AnItem.productId = Convert.ToInt32(txtProductId.Text);
         AnItem.productName = txtProductName.Text;
         AnItem.productPrice = Convert.ToDouble(txtProductPrice.Text);
         AnItem.modelNo = txtModelNo.Text;
