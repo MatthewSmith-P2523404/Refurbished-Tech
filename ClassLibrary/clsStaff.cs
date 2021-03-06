@@ -102,5 +102,70 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string staffName, string staffAddress, string startDate, string salary)
+        {
+            String error = "";      //variable for the error
+            DateTime TempDate;      //variable for the temporary date
+            Double TempSalary;       //variable for the temporary salary
+
+            if(staffName.Length == 0)
+            {
+                error = error + "The Staff name may be blank : "; 
+            }
+
+            if(staffName.Length > 50)
+            {
+                error = error + "The Staff name should be less than 50 characters : ";
+            }
+
+            try
+            {
+                TempDate = Convert.ToDateTime(startDate);
+                if (TempDate < DateTime.Now.Date)
+                {
+                    error = error + "The date cannot be in the past : ";
+                }
+
+                if (TempDate > DateTime.Now.Date)
+                {
+                    error = error + "The data cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                error = error + "The date was not a valid date : ";
+            }
+            
+            if (staffAddress.Length == 0)
+            {
+                error = error + "The address may be blank : ";
+            }
+
+            if (staffAddress.Length > 50)
+            {
+                error = error + "The address should not be over 50 characters : ";
+            }
+
+            try
+            {
+                TempSalary = Double.Parse(salary);
+                if (TempSalary <= 0)
+                {
+                    error = error + "The salary should not be 0 or less : ";
+                }
+
+                if (TempSalary >= 1000000)
+                {
+                    error = error + "The salary is too high : ";
+                }
+            }
+            catch
+            {
+                error = error + "The salary should be a number : ";
+            }
+
+            return error;
+        }
     }
 }
