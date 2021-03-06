@@ -44,4 +44,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the viewer page
         Response.Redirect("StaffViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStaff AStaff = new clsStaff();
+        Int32 StaffID;
+        Boolean found = false;
+        StaffID = Convert.ToInt32(txtStaffID.Text);
+        found = AStaff.Find(StaffID);
+        if (found == true)
+        {
+            txtStaffName.Text = AStaff.StaffName;
+            txtStaffAddress.Text = AStaff.StaffAddress;
+            txtStartDate.Text = AStaff.StartDate.ToString();
+            txtSalary.Text = AStaff.Salary.ToString();
+        }
+    }
 }
