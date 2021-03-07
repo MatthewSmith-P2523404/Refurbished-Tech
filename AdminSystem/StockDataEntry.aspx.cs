@@ -34,4 +34,55 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // navigate to the stock viewer page
         Response.Redirect("StockViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        // instantiate stock class
+        clsStock item = new clsStock();
+
+        // primary key
+        Int32 productId;
+
+        // bool to store found status
+        Boolean found = false;
+
+        // temporary solution to not crash the program if non-integer productId is given
+        Int32.TryParse(txtProductId.Text, out productId);
+
+        // try find the item
+        found = item.Find(productId);
+
+        // if item found, insert item details into textboxes, else throw an error
+        if (found == true)
+        {
+            txtProductName.Text = item.productName;
+            txtModelNo.Text = item.modelNo;
+            txtGrossWeight.Text = item.grossWeight.ToString();
+            txtNetWeight.Text = item.netWeight.ToString();
+            txtProductName.Text = item.productName;
+            txtProductPrice.Text = item.productPrice.ToString();
+            txtReleaseDate.Text = item.releaseDate.ToString();
+
+            chkVisibility.Checked = item.visible;
+
+            // clear any existing error messages
+            lblError.Text = "";
+        }
+        else
+        {
+            // throw error message
+            lblError.Text = "ERROR: Product ID \"" + productId + "\" not found.";
+
+            // reset forms if searched item does not exist
+            txtProductId.Text = "";
+            txtProductName.Text = "";
+            txtModelNo.Text = "";
+            txtGrossWeight.Text = "";
+            txtNetWeight.Text = "";
+            txtProductName.Text = "";
+            txtProductPrice.Text = "";
+            txtReleaseDate.Text = "";
+            chkVisibility.Checked = false;
+        }
+    }
 }
