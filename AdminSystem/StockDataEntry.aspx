@@ -18,6 +18,7 @@
         <asp:Label ID="lblProductId" runat="server" Text="Product ID" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" ValidateRequestMode="Enabled" />
         <br />
         <asp:Label ID="lblProductName" runat="server" Text="Product Name" width="94px"></asp:Label>
 &nbsp;
@@ -27,24 +28,24 @@
 &nbsp;
         <asp:TextBox ID="txtProductPrice" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="Label3" runat="server" Text="Model Number" width="94px"></asp:Label>
+        <asp:Label ID="lblModelNumber" runat="server" Text="Model Number" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtModelNo" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="Label4" runat="server" Text="Release Date" width="94px"></asp:Label>
+        <asp:Label ID="lblReleaseDate" runat="server" Text="Release Date" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtReleaseDate" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="Label5" runat="server" Text="Net Weight" width="94px"></asp:Label>
+        <asp:Label ID="lblNetWeight" runat="server" Text="Net Weight" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtNetWeight" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="Label7" runat="server" Text="Gross Weight" width="94px"></asp:Label>
+        <asp:Label ID="lblGrossWeight" runat="server" Text="Gross Weight" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtGrossWeight" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Label ID="Label6" runat="server" Text="Hidden Item"></asp:Label>
+        <asp:Label ID="lblHiddenItem" runat="server" Text="Hidden Item"></asp:Label>
         <asp:CheckBox ID="chkVisibility" runat="server" />
         <br />
         <br />
