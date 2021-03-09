@@ -94,5 +94,48 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string shippingMethod, string dateOrdered)
+        {
+            //var to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the shipping method is blank
+            if (shippingMethod.Length == 0)
+            {
+                Error = Error + "The shipping method may be blank : ";
+            }
+
+            if (shippingMethod.Length > 50)
+            {
+                Error = Error + "The shipping method should be less than 50 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOrdered);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            //return any error messages
+            return Error;
+        }
     }
 }

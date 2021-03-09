@@ -33,11 +33,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the shipping method
         AnOrder.ShippingMethod = txtShippingMethod.Text;
         //capture the date
-        //AnOrder.DateOrdered = txtDateOrdered.Text;
-        //store the order in the session object
-        Session["AnOrder"] = AnOrder;
-        //navigate to the viewer page
-        Response.Redirect("OrdersViewer.aspx");
+        AnOrder.DateOrdered = Convert.ToDateTime(txtDateOrdered.Text);
+        //var for error messages
+        string Error = "";
+        //validate the data
+       // Error = AnOrder.Valid(ShippingMethod, DateOrdered);
+        if (Error == "")
+        {
+            //capture the shipping method
+           // AnOrder.ShippingMethod = ShippingMethod;
+            //capture the date
+            AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
+            //store the order in the session object
+            Session["AnOrder"] = AnOrder;
+            //navigate to the viewer page
+            Response.Write("OrdersViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            Label1.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
