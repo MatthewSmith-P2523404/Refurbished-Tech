@@ -16,33 +16,63 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        clsStaff aStaff = new clsStaff();
-        string id = txtStaffID.Text;
-        aStaff.StaffID = Int32.Parse(id);
-        aStaff.StaffName = txtStaffName.Text;
-        aStaff.StaffAddress = txtStaffAddress.Text;
-      
-        //so the string can be converted the dateTime type
-        string date = txtStartDate.Text;
-        //changes how the date will be formatted
-        var dateForm = new CultureInfo("de-DE");
-        aStaff.StartDate = DateTime.Parse(date);
+        /* clsStaff aStaff = new clsStaff();
+         string id = txtStaffID.Text;
+         aStaff.StaffID = Int32.Parse(id);
+         aStaff.StaffName = txtStaffName.Text;
+         aStaff.StaffAddress = txtStaffAddress.Text;
 
-        string amount = txtSalary.Text;
-        aStaff.Salary = Int32.Parse(amount);
+         //so the string can be converted the dateTime type
+         string date = txtStartDate.Text;
+         //changes how the date will be formatted
+         var dateForm = new CultureInfo("de-DE");
+         aStaff.StartDate = DateTime.Parse(date);
 
-        if (chkManager.Checked)
+         string amount = txtSalary.Text;
+         aStaff.Salary = Int32.Parse(amount);
+
+         if (chkManager.Checked)
+         {
+             aStaff.Manager = true;
+         } else
+         {
+             aStaff.Manager = false;
+         }*/
+
+        clsStaff AStaff = new clsStaff();
+        string StaffID = txtStaffID.Text;
+        string StaffName = txtStaffName.Text;
+        string StaffAddress = txtStaffAddress.Text;
+        string StartDate = txtStartDate.Text;
+        string Salary = txtSalary.Text;
+
+
+        string Error = "";
+        Error = AStaff.Valid(StaffName, StaffAddress, StartDate, Salary);
+
+        if (Error == "")
         {
-            aStaff.Manager = true;
-        } else
+            AStaff.StaffName = StaffName;
+            AStaff.StaffAddress = StaffAddress;
+            AStaff.StartDate = Convert.ToDateTime(StartDate);
+            AStaff.Salary = Convert.ToDouble(Salary);
+            if (chkManager.Checked)
+            {
+                AStaff.Manager = true;
+            }
+            else
+            {
+                AStaff.Manager = false;
+            }
+
+            Session["AStaff"] = AStaff;
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
         {
-            aStaff.Manager = false;
+            lblError.Text = Error;
         }
 
-        Session["aStaff"] = aStaff;
-
-        //navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -51,6 +81,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 StaffID;
         Boolean found = false;
         StaffID = Convert.ToInt32(txtStaffID.Text);
+
         found = AStaff.Find(StaffID);
         if (found == true)
         {
@@ -59,5 +90,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtStartDate.Text = AStaff.StartDate.ToString();
             txtSalary.Text = AStaff.Salary.ToString();
         }
+        
+        
     }
 }
