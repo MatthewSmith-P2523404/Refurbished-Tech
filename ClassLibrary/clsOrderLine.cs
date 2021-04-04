@@ -76,7 +76,7 @@
         public bool Find(int orderId)
         {
             //set the private data members to the test data value
-            mOrderId = 21;
+            mOrderId = 1;
             mProductId = "abc123";
             mPrice = 15.05;
             mQuantity = 2;

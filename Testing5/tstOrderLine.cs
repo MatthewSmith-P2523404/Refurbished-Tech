@@ -67,7 +67,7 @@ namespace Testing5
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //test to see if result is true
@@ -83,11 +83,11 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //check the order id
-            if (AnOrderLine.OrderId != 21)
+            if (AnOrderLine.OrderId != 1)
             {
                 OK = false;
             }
@@ -104,7 +104,7 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //check the product id
@@ -125,7 +125,7 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //check the price
@@ -146,7 +146,7 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //check the quantity
@@ -167,7 +167,7 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderLine.Find(OrderId);
             //check available

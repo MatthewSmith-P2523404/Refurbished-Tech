@@ -63,7 +63,7 @@ namespace ClassLibrary
         public bool Find(int orderId)
         {
             /* //set the private data members to the test data value
-             mOrderId = 21;
+             mOrderId = 1;
              mShippingMethod = "sameday";
              mDateOrdered = Convert.ToDateTime("16/9/2015");
              mDispatched = true;
