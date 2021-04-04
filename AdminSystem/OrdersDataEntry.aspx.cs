@@ -29,7 +29,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order id
-        //AnOrder.OrderId = txtOrderId.Text;
+        AnOrder.OrderId = txtOrderId.Text;
         //capture the shipping method
         AnOrder.ShippingMethod = txtShippingMethod.Text;
         //capture the date
@@ -37,11 +37,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //var for error messages
         string Error = "";
         //validate the data
-       // Error = AnOrder.Valid(ShippingMethod, DateOrdered);
+        Error = AnOrder.Valid(ShippingMethod, DateOrdered);
         if (Error == "")
         {
             //capture the shipping method
-           // AnOrder.ShippingMethod = ShippingMethod;
+            AnOrder.ShippingMethod = ShippingMethod;
             //capture the date
             AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
             //store the order in the session object

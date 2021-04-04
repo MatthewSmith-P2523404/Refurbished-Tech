@@ -64,7 +64,7 @@ namespace Testing3
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if result is true
@@ -80,11 +80,11 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.OrderId != 1)
             {
                 OK = false;
             }
@@ -101,7 +101,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the shipping method
@@ -122,7 +122,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
@@ -143,7 +143,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
