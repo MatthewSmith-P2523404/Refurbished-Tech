@@ -4,8 +4,104 @@ namespace ClassLibrary
 {
     public class clsOrderCollection
     {
-        public List<clsOrder> OrderList { get; set; }
-        public int Count { get; set; }
-        public clsOrder ThisOrder { get; set; }
+        //private data member for the list
+        List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member thisOrder
+        clsOrder mThisOrder = new clsOrder();
+        //public property for the order list
+        public List<clsOrder> OrderList
+        {
+            get
+            {
+                //return private data
+                return mOrderList;
+            }
+            set
+            {
+                //set the private data
+                mOrderList = value;
+            }
+        }
+        public int Count
+        {
+            get
+            {
+                //return the count of the list
+                return mOrderList.Count;
+            }
+            set
+            {
+                //
+            }
+        }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                //return the private data
+                return mThisOrder;
+            }
+            set
+            {
+                //set the private data
+                mThisOrder = value;
+            }
+        }
+        //constructor for the class
+        public clsOrderCollection()
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_SelectAll");
+            //get the count of records
+            RecordCount = DB.Count;
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsOrder AnOrder = new clsOrder();
+                //read in the fields from the current record
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrder.ShippingMethod = Convert.ToString(DB.DataTable.Rows[Index]["ShippingMethod"]);
+                AnOrder.DateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOrdered"]);
+                AnOrder.Dispatched = Convert.ToBoolean(DB.DataTable.Rows[Index]["Dispatched"]);
+                //add the record to the private data member
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the db based on the values of mThisOrder
+            //connect to the db
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@ShippingMethod", mThisOrder.ShippingMethod);
+            DB.AddParameter("@DateOrdered", mThisOrder.DateOrdered);
+            DB.AddParameter("@Dispatched", mThisOrder.Dispatched);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record to the db based on the values of thisOrder
+            //connect to the db
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@ShippingMethod", mThisOrder.ShippingMethod);
+            DB.AddParameter("@DateOrdered", mThisOrder.DateOrdered);
+            DB.AddParameter("@Dispatched", mThisOrder.Dispatched);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblOrder_Update");
+
+        }
     }
 }

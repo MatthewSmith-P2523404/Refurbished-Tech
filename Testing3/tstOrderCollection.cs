@@ -61,5 +61,88 @@ namespace Testing3
             //test if values are the same
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
         }
+        [TestMethod]
+        public void ListAndCountOK()
+        {
+            //instance of class
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //test data
+            List<clsOrder> TestList = new List<clsOrder>();
+            //add an item to the list
+            clsOrder TestItem = new clsOrder();
+            //set properties
+            TestItem.OrderId = 1;
+            TestItem.ShippingMethod = "sameday";
+            TestItem.DateOrdered = DateTime.Now.Date;
+            TestItem.Dispatched = true;
+            //add item to test list
+            TestList.Add(TestItem);
+            //assign data to property
+            AllOrders.OrderList = TestList;
+            //test if values are the same
+            Assert.AreEqual(AllOrders.Count, TestList.Count);
+        }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //instance of class
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderId = 1;
+            TestItem.ShippingMethod = "sameday";
+            TestItem.DateOrdered = DateTime.Now.Date;
+            TestItem.Dispatched = true;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test if values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //instance of class
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderId = 1;
+            TestItem.ShippingMethod = "sameday";
+            TestItem.DateOrdered = DateTime.Now.Date;
+            TestItem.Dispatched = true;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //modify the test data
+            TestItem.OrderId = 3;
+            TestItem.ShippingMethod = "nextday";
+            TestItem.DateOrdered = DateTime.Now.Date;
+            TestItem.Dispatched = false;
+            //set the record based on the new test data
+            AllOrders.ThisOrder = TestItem;
+            //update the record
+            AllOrders.Update();
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test if values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 }
+
+ 
+
