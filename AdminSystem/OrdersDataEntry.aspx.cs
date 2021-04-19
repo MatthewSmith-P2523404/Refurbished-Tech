@@ -8,9 +8,22 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //var to store the primary key with page level scope
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //create anew instance of the class
+        //get the num of orders to pe processed
+        OrderID = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderID != -1)
+            {
+                //display current data for the record
+                DisplayOrder();
+            }
+        }
+        /*/create anew instance of the class
         clsOrder AnOrder = new clsOrder();
         //get the data from the session object
         AnOrder = (clsOrder)Session["AnOrder"];
@@ -22,6 +35,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Write(AnOrder.DateOrdered);
         //display dispatched on the page
         Response.Write(AnOrder.Dispatched);
+        */
+    }
+    void DisplayOrder()
+    {
+        //create an instance of the order
+        clsOrderCollection Order = new clsOrderCollection();
+        //find the record to update
+        Order.ThisOrder.Find(OrderID);
+        //display the data for this record
+        txtOrderId.Text = Order.ThisOrder.OrderId.ToString();
+        txtShippingMethod.Text = Order.ThisOrder.ShippingMethod;
+        txtDateOrdered.Text = Order.ThisOrder.DateOrdered.ToString();
+        chkDispatched.Checked = Order.ThisOrder.Dispatched;
     }
 
     protected void BtnOK_Click1(object sender, EventArgs e)
@@ -29,25 +55,50 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order id
-        AnOrder.OrderId = txtOrderId.Text;
+        string OrderID = txtOrderId.Text;
         //capture the shipping method
-        AnOrder.ShippingMethod = txtShippingMethod.Text;
+        string ShippingMethod = txtShippingMethod.Text;
         //capture the date
-        AnOrder.DateOrdered = Convert.ToDateTime(txtDateOrdered.Text);
+        string DateOrdered = txtDateOrdered.Text;
         //var for error messages
         string Error = "";
         //validate the data
         Error = AnOrder.Valid(ShippingMethod, DateOrdered);
         if (Error == "")
         {
+            //capture the order id
+            AnOrder.OrderId = this.OrderID;
             //capture the shipping method
             AnOrder.ShippingMethod = ShippingMethod;
             //capture the date
             AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
+            //capture dispatched
+            AnOrder.Dispatched = chkDispatched.Checked;
             //store the order in the session object
-            Session["AnOrder"] = AnOrder;
+            //Session["AnOrder"] = AnOrder;
             //navigate to the viewer page
-            Response.Write("OrdersViewer.aspx");
+            //Response.Write("OrdersViewer.aspx");
+
+            //create new instance of the order collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            if (this.OrderID == -1)
+            {
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //add the new record
+                OrderList.Add();
+            }//otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderID);
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+            //redirect back to the listpage
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
