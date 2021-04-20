@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -102,6 +103,17 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             DB.Execute("sproc_tblOrder_Update");
 
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAddress_Delete");
         }
     }
 }
