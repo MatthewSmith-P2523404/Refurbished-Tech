@@ -141,6 +141,35 @@ namespace Testing3
             //test if values are the same
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //instance of class
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item for test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderId = 1;
+            TestItem.ShippingMethod = "sameday";
+            TestItem.DateOrdered = DateTime.Now.Date;
+            TestItem.Dispatched = true;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //delete the record
+            //AllOrders.Delete();
+            //now find the record
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
     }
 }
 
