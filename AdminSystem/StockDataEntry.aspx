@@ -18,7 +18,7 @@
         <asp:Label ID="lblProductId" runat="server" Text="Product ID" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" ValidateRequestMode="Enabled" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <br />
         <asp:Label ID="lblProductName" runat="server" Text="Product Name" width="94px"></asp:Label>
 &nbsp;

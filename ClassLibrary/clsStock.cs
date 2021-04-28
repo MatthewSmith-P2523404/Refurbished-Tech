@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ClassLibrary
@@ -144,6 +145,127 @@ namespace ClassLibrary
                 // return false if the item wasn't found
                 return false;
             }
+
+        }
+
+        public string Valid(string productId, string productName, string productPrice, string modelNo, string releaseDate, string netWeight, string grossWeight, string visible)
+        {
+            string Error = ""; // String to contain error messages
+            Regex validChars = new Regex("^[a-zA-Z0-9-_ ]*$"); // regex to validate strings as alphanumeric
+
+            // Product ID validation
+            if (productId == "")
+            {
+                Error += "Product ID cannot be empty.\n";
+            }
+            else if (!Int32.TryParse(productId, out int a))
+            {
+                Error += "Product ID is invalid.\n";
+            }
+            else if (productId.Length > 8)
+            {
+                Error += "Product ID cannot be more than 8 digits long.\n";
+            }
+            else if (Convert.ToInt32(productId) < 0)
+            {
+                Error += "Product ID cannot be a negative value.\n";
+            }
+
+            // Product name validation
+            if (productName == "")
+            {
+                Error += "Product name cannot be empty.\n";
+            }
+            else if (!validChars.IsMatch(productName))
+            {
+                Error += "Product name contains illegal characters.\n";
+            }
+            else if (productName.Length > 50)
+            {
+                Error += "Product name cannot be greater than 50 characters.\n";
+            }
+
+            // Product price validation
+            if (productPrice == "")
+            {
+                Error += "Product price cannot be empty.\n";
+            }
+            else if (!double.TryParse(productPrice, out double b))
+            {
+                Error += "Product price is invalid.\n";
+            }
+            else if (Convert.ToDouble(productPrice) > 1000000) // max price: 1 million
+            {
+                Error += "Price is too high.\n";
+            }
+            else if (Convert.ToDouble(productPrice) <= 0) //price cannot be negative 
+            {
+                Error += "Price cannot be zero or negative.\n";
+            }
+
+            // Model number validation
+            if (modelNo == "")
+            {
+                Error += "Model number cannot be empty.\n";
+            }
+            else if (!validChars.IsMatch(modelNo))
+            {
+                Error += "Model number contains illegal characters.\n";
+            }
+            else if (modelNo.Length > 50)
+            {
+                Error += "Model number cannot be greater than 50 characters.\n";
+            }
+
+            // Release date validation
+            if (releaseDate == "")
+            {
+                Error += "Release date cannot be empty.\n";
+            }
+            else if (!DateTime.TryParse(releaseDate, out DateTime c)) // checks if date is valid
+            {
+                Error += "Release date is invalid.\n";
+            }
+
+
+            // Net weight validation
+            if (netWeight == "")
+            {
+                // empty weight is fine
+            }
+            else if (!double.TryParse(netWeight, out double d))
+            {
+                Error += "Net weight is invalid.\n";
+            }
+            else if (Convert.ToDouble(netWeight) > 10000) // max weight: 10000 (kg)
+            {
+                Error += "Net weight cannot be greater than 10,000kg.\n";
+            }
+            else if (Convert.ToDouble(netWeight) < 0) // cannot be negative 
+            {
+                Error += "Net weight cannot be negative.\n";
+            }
+
+            // Gross weight validation
+            if (grossWeight == "")
+            {
+                // empty weight is fine
+            }
+            else if (!double.TryParse(grossWeight, out double e))
+            {
+                Error += "Gross weight is invalid.\n";
+            }
+            else if (Convert.ToDouble(grossWeight) > 10000) // max weight: 10000 (kg)
+            {
+                Error += "Gross weight cannot be greater than 10,000kg.\n";
+            }
+            else if (Convert.ToDouble(grossWeight) < 0) // cannot be negative 
+            {
+                Error += "Gross weight cannot be negative.\n";
+            }
+
+            // return error report
+            return Error;
         }
     }
 }

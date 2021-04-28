@@ -19,20 +19,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnItem = new clsStock();
 
         // fetch data from forms for each field
-        AnItem.productId = Convert.ToInt32(txtProductId.Text);
-        AnItem.productName = txtProductName.Text;
-        AnItem.productPrice = Convert.ToDouble(txtProductPrice.Text);
-        AnItem.modelNo = txtModelNo.Text;
-        AnItem.releaseDate = Convert.ToDateTime(txtReleaseDate.Text);
-        AnItem.netWeight = Convert.ToDouble(txtNetWeight.Text);
-        AnItem.grossWeight = Convert.ToDouble(txtGrossWeight.Text);
-        AnItem.visible = chkVisibility.Checked;
 
-        // create a session for the instantiated class
-        Session["AnItem"] = AnItem;
+        string productId = txtProductId.Text;
+        string productName = txtProductName.Text;
+        string productPrice = txtProductPrice.Text;
+        string modelNo = txtModelNo.Text;
+        string releaseDate = txtReleaseDate.Text;
+        string netWeight = txtNetWeight.Text;
+        string grossWeight = txtGrossWeight.Text;
+        string Error = "";
 
-        // navigate to the stock viewer page
-        Response.Redirect("StockViewer.aspx");
+        Error = AnItem.Valid(productId, productName, productPrice, modelNo, releaseDate, netWeight, grossWeight, "true");
+
+        if (Error == "")
+        {
+            AnItem.productId = Convert.ToInt32(txtProductId.Text);
+            AnItem.productName = txtProductName.Text;
+            AnItem.productPrice = Convert.ToDouble(txtProductPrice.Text);
+            AnItem.modelNo = txtModelNo.Text;
+            AnItem.releaseDate = Convert.ToDateTime(txtReleaseDate.Text);
+            AnItem.netWeight = Convert.ToDouble(txtNetWeight.Text);
+            AnItem.grossWeight = Convert.ToDouble(txtGrossWeight.Text);
+            AnItem.visible = chkVisibility.Checked;
+
+            // create a session for the instantiated class
+            Session["AnItem"] = AnItem;
+
+            // navigate to the stock viewer page
+            Response.Redirect("StockViewer.aspx");
+
+            
+        } else
+        {
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
