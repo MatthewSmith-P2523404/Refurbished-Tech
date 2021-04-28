@@ -148,28 +148,10 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string productId, string productName, string productPrice, string modelNo, string releaseDate, string netWeight, string grossWeight, string visible)
+        public string Valid(string productName, string productPrice, string modelNo, string releaseDate, string netWeight, string grossWeight, string visible)
         {
             string Error = ""; // String to contain error messages
             Regex validChars = new Regex("^[a-zA-Z0-9-_ ]*$"); // regex to validate strings as alphanumeric
-
-            // Product ID validation
-            if (productId == "")
-            {
-                Error += "Product ID cannot be empty.\n";
-            }
-            else if (!Int32.TryParse(productId, out int a))
-            {
-                Error += "Product ID is invalid.\n";
-            }
-            else if (productId.Length > 8)
-            {
-                Error += "Product ID cannot be more than 8 digits long.\n";
-            }
-            else if (Convert.ToInt32(productId) < 0)
-            {
-                Error += "Product ID cannot be a negative value.\n";
-            }
 
             // Product name validation
             if (productName == "")

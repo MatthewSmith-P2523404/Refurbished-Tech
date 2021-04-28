@@ -14,11 +14,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-        </div>
+            <strong>Add or Edit Inventory</strong></div>
         <asp:Label ID="lblProductId" runat="server" Text="Product ID" width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Search Product ID" />
         <br />
         <asp:Label ID="lblProductName" runat="server" Text="Product Name" width="94px"></asp:Label>
 &nbsp;
@@ -28,7 +28,7 @@
 &nbsp;
         <asp:TextBox ID="txtProductPrice" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblModelNumber" runat="server" Text="Model Number" width="94px"></asp:Label>
+        <asp:Label ID="lblModelNumber" runat="server" Text="Model No." width="94px"></asp:Label>
 &nbsp;
         <asp:TextBox ID="txtModelNo" runat="server"></asp:TextBox>
         <br />
@@ -45,15 +45,15 @@
         <asp:TextBox ID="txtGrossWeight" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Label ID="lblHiddenItem" runat="server" Text="Hidden Item"></asp:Label>
-        <asp:CheckBox ID="chkVisibility" runat="server" />
+        <asp:Label ID="lblHiddenItem" runat="server" Text="Visible On Store?"></asp:Label>
+        <asp:CheckBox ID="chkVisibility" runat="server" Checked="True" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <br />
         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" Text="Back" OnClick="btnCancel_Click" />
         <br />
     </form>
 </body>

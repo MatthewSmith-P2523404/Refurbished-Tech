@@ -167,12 +167,13 @@ namespace Testing4
 
             String Error = "";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
         }
 
+        /**
         // test product id validity
         [TestMethod]
         public void productIdEmpty()
@@ -329,7 +330,7 @@ namespace Testing4
 
             Assert.AreEqual(Error, "");
         }
-
+        */
         // test product name validity
         [TestMethod]
         public void ProductNameEmpty()
@@ -339,7 +340,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Product name cannot be empty.");
@@ -353,7 +354,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
            Assert.AreEqual(Error, "");
@@ -366,7 +367,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -380,7 +381,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Product name cannot be greater than 50 characters.");
@@ -395,7 +396,7 @@ namespace Testing4
             String testProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Product name cannot be greater than 50 characters.");
@@ -409,7 +410,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "aaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -423,7 +424,7 @@ namespace Testing4
             String Error = "";
             String testProductName = "iPad') DROP TABLE Products; --";
 
-            Error = stockTest.Valid(productId, testProductName, productPrice, modelNo,
+            Error = stockTest.Valid(testProductName, productPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Product name contains illegal characters.");
@@ -438,7 +439,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Model number cannot be empty.");
@@ -452,7 +453,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -465,7 +466,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -479,7 +480,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Model number cannot be greater than 50 characters.");
@@ -494,7 +495,7 @@ namespace Testing4
             String testModelNo = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Model number cannot be greater than 50 characters.");
@@ -508,7 +509,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "aaaaaaaaaaaaaaaaaaaa";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -522,7 +523,7 @@ namespace Testing4
             String Error = "";
             String testModelNo = "Optiplex') DROP TABLE Products; --";
 
-            Error = stockTest.Valid(productId, productName, productPrice, testModelNo,
+            Error = stockTest.Valid(productName, productPrice, testModelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Model number contains illegal characters.");
@@ -538,7 +539,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "-9999999";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Price cannot be zero or negative.");
@@ -552,7 +553,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "-1";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Price cannot be zero or negative.");
@@ -566,7 +567,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "0.01";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -580,7 +581,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "1";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -594,7 +595,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "999999";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -608,7 +609,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "1000000";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -622,7 +623,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "1000001";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Price is too high.");
@@ -636,7 +637,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "500000";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -650,7 +651,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "1000000000";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Price is too high.");
@@ -664,7 +665,7 @@ namespace Testing4
             String Error = "";
             String testProductPrice = "onebilliondollars";
 
-            Error = stockTest.Valid(productId, productName, testProductPrice, modelNo,
+            Error = stockTest.Valid(productName, testProductPrice, modelNo,
                 releaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Product price is invalid.");
@@ -679,7 +680,7 @@ namespace Testing4
             String Error = "";
             String testReleaseDate = "thursday";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                testReleaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Release date is invalid.");
@@ -693,7 +694,7 @@ namespace Testing4
             String Error = "";
             String testReleaseDate = Convert.ToString(DateTime.Now.Date);
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                testReleaseDate, netWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -707,7 +708,7 @@ namespace Testing4
             String Error = "";
             String testReleaseDate = "";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                testReleaseDate, netWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Release date cannot be empty.");
@@ -722,7 +723,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "-9999999";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             StringAssert.Contains(Error, "Gross weight cannot be negative.");
@@ -736,7 +737,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "-1";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             StringAssert.Contains(Error, "Gross weight cannot be negative.");
@@ -750,7 +751,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "0.01";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -764,7 +765,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "1";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -778,7 +779,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "9999";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -792,7 +793,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "10000";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -806,7 +807,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "10001";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             StringAssert.Contains(Error, "Gross weight cannot be greater than 10,000kg.");
@@ -820,7 +821,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "500";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -834,7 +835,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "1000000000";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             StringAssert.Contains(Error, "Gross weight cannot be greater than 10,000kg.");
@@ -848,7 +849,7 @@ namespace Testing4
             String Error = "";
             String testGrossWeight = "1 kilogram";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, netWeight, testGrossWeight, visible);
 
             StringAssert.Contains(Error, "Gross weight is invalid.");
@@ -863,7 +864,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "-9999999";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Net weight cannot be negative.");
@@ -877,7 +878,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "-1";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                             releaseDate, testNetWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Net weight cannot be negative.");
@@ -891,7 +892,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "0.01";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                  releaseDate, testNetWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -905,7 +906,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "1";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -919,7 +920,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "9999";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -933,7 +934,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "10000";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -947,7 +948,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "10001";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Net weight cannot be greater than 10,000kg.");
@@ -961,7 +962,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "500";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             Assert.AreEqual(Error, "");
@@ -975,7 +976,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "1000000000";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Net weight cannot be greater than 10,000kg.");
@@ -989,7 +990,7 @@ namespace Testing4
             String Error = "";
             String testNetWeight = "1 kilogram";
 
-            Error = stockTest.Valid(productId, productName, productPrice, modelNo,
+            Error = stockTest.Valid(productName, productPrice, modelNo,
                 releaseDate, testNetWeight, grossWeight, visible);
 
             StringAssert.Contains(Error, "Net weight is invalid.");
