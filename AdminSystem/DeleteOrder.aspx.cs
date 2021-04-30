@@ -27,4 +27,9 @@ public partial class DeleteOrder : System.Web.UI.Page
         //redirect to the main page
         Response.Redirect("OrderList.aspx");
     }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderList.aspx");
+    }
 }
