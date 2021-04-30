@@ -170,6 +170,54 @@ namespace Testing3
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByShippingMethodMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilterOrders = new clsOrderCollection();
+
+            FilterOrders.ReportByShippingMethod("");
+            Assert.AreEqual(AllOrders.Count, FilterOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByShippingMethodNoneFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a shipping method that doesnt exist
+            FilteredOrders.ReportByShippingMethod("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByShippingMethodTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //var to store the outcome
+            Boolean OK = true;
+            //apply a shipping method that doesn't exist
+            FilteredOrders.ReportByShippingMethod("yyy yyy");
+            //check that the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //check that the first record is ID 1
+                if (FilteredOrders.OrderList[0].OrderId != 1)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 2
+                if (FilteredOrders.OrderList[1].OrderId != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }
 

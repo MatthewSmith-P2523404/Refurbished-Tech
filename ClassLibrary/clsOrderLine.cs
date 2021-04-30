@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary
+﻿using System;
+
+namespace ClassLibrary
 {
     //order line class and properties
     public class clsOrderLine
@@ -83,6 +85,11 @@
             mAvailable = true;
             //always return true
             return true;
+        }
+
+        public string Valid(string productId, string price, string quantity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

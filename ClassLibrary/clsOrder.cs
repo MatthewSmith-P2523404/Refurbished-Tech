@@ -62,14 +62,6 @@ namespace ClassLibrary
 
         public bool Find(int orderId)
         {
-            /* //set the private data members to the test data value
-             mOrderId = 1;
-             mShippingMethod = "sameday";
-             mDateOrdered = Convert.ToDateTime("16/9/2015");
-             mDispatched = true;
-             //always return true
-             return true;
-             */
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the order ID to search for
