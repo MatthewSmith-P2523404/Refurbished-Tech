@@ -51,29 +51,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsOrderCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount;
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsOrder AnOrder = new clsOrder();
-                //read in the fields from the current record
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
-                AnOrder.ShippingMethod = Convert.ToString(DB.DataTable.Rows[Index]["ShippingMethod"]);
-                AnOrder.DateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOrdered"]);
-                AnOrder.Dispatched = Convert.ToBoolean(DB.DataTable.Rows[Index]["Dispatched"]);
-                //add the record to the private data member
-                mOrderList.Add(AnOrder);
-                //point at the next record
-                Index++;
-            }
+            //populate the array with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -114,6 +97,42 @@ namespace ClassLibrary
             DB.AddParameter("@OrderId", mThisOrder.OrderId);
             //execute the stored procedure
             DB.Execute("sproc_tblAddress_Delete");
+        }
+
+        public void ReportByShippingMethod(string ShippingMethod)
+        {
+            //filters the records based on a full or partial post code
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ShippingMethod", ShippingMethod);
+            DB.Execute("sproc_tblOrder_FilterByShippingMethod");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            Int32 Index = 0;
+            Int32 RecordCount;
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_SelectAll");
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mOrderList = new List<clsOrder>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsOrder AnOrder = new clsOrder();
+                //read in the fields from the current record
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrder.ShippingMethod = Convert.ToString(DB.DataTable.Rows[Index]["ShippingMethod"]);
+                AnOrder.DateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOrdered"]);
+                AnOrder.Dispatched = Convert.ToBoolean(DB.DataTable.Rows[Index]["Dispatched"]);
+                //add the record to the private data member
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }

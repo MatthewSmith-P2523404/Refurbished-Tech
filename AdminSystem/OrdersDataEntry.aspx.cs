@@ -55,7 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order id
-        string OrderID = txtOrderId.Text;
+        string OrderId = txtOrderId.Text;
         //capture the shipping method
         string ShippingMethod = txtShippingMethod.Text;
         //capture the date

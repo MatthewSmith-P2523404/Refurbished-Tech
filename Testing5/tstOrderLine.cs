@@ -7,6 +7,11 @@ namespace Testing5
     [TestClass]
     public class tstOrderLine
     {
+        //good test data for validation
+        string ProductId = "123abc";
+        string Price="24.99";
+        string Quantity="3";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -178,6 +183,127 @@ namespace Testing5
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-       
+        //validation testing
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string var to store error message
+            String Error = "";
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test result
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductIdMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string ProductId = "";
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ProductId = "a";
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ProductId = "aa";
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ProductId = "";
+            ProductId = ProductId.PadRight(49, 'a');
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ProductId = "";
+            ProductId = ProductId.PadRight(50, 'a');
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string ProductId = "";
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductIdMid()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ProductId = "";
+            ProductId = ProductId.PadRight(25, 'a');
+            //invoke the method
+            Error = AnOrderLine.Valid(ProductId, Price, Quantity);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
     }
+
 }
