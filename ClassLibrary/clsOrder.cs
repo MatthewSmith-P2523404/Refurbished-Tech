@@ -73,7 +73,7 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
-                mShippingMethod = Convert.ToString(DB.DataTable.Rows[0]["ShippinfMethod"]);
+                mShippingMethod = Convert.ToString(DB.DataTable.Rows[0]["ShippingMethod"]);
                 mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOrdered"]);
                 mDispatched=Convert.ToBoolean(DB.DataTable.Rows[0]["Dispatched"]);
                 //return that everything worked ok

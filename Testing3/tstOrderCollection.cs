@@ -32,18 +32,7 @@ namespace Testing3
             //test if values are the same
             Assert.AreEqual(AllOrders.OrderList, TestList);
         }
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            //instance of class
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            //test data
-            Int32 SomeCount = 0;
-            //assign data to property
-            AllOrders.Count = SomeCount;
-            //test if values are the same
-            Assert.AreEqual(AllOrders.Count, SomeCount);
-        }
+     
         [TestMethod]
         public void ThisOrderPropertyOK()
         {
@@ -164,7 +153,7 @@ namespace Testing3
             //find the record
             AllOrders.ThisOrder.Find(PrimaryKey);
             //delete the record
-            //AllOrders.Delete();
+            AllOrders.Delete();
             //now find the record
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             //test to see that the record was not found

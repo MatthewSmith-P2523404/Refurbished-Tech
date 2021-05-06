@@ -65,7 +65,6 @@ namespace ClassLibrary
             //connect to the db
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@OrderId", mThisOrder.OrderId);
             DB.AddParameter("@ShippingMethod", mThisOrder.ShippingMethod);
             DB.AddParameter("@DateOrdered", mThisOrder.DateOrdered);
             DB.AddParameter("@Dispatched", mThisOrder.Dispatched);
