@@ -178,14 +178,14 @@ namespace Testing1
         {
             clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
             Boolean OK = true;
-            FilteredCustomers.ReportByUsername("BobbyS");
+            FilteredCustomers.ReportByUsername("user");
             if (FilteredCustomers.Count == 2)
             {
-                if (FilteredCustomers.CustomerList[0].CustomerId != 6)
+                if (FilteredCustomers.CustomerList[0].CustomerId != 1)
                 {
                     OK = false;
                 }
-                if (FilteredCustomers.CustomerList[1].CustomerId != 9)
+                if (FilteredCustomers.CustomerList[1].CustomerId != 42)
                 {
                     OK = false;
                 }
