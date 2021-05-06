@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -96,7 +96,7 @@ namespace ClassLibrary
             //set the parameters for the stored procedure
             DB.AddParameter("@OrderId", mThisOrder.OrderId);
             //execute the stored procedure
-            DB.Execute("sproc_tblAddress_Delete");
+            DB.Execute("sproc_tblOrder_Delete");
         }
 
         public void ReportByShippingMethod(string ShippingMethod)

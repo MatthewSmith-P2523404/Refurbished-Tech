@@ -58,6 +58,7 @@
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsOrderLine.cs" />
+    <Compile Include="clsOrderLineCollection.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsDataConnection.cs" />
