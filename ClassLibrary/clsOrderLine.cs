@@ -89,7 +89,59 @@ namespace ClassLibrary
 
         public string Valid(string productId, string price, string quantity)
         {
-            throw new NotImplementedException();
+            //create a string variable to store the error
+            String Error = "";
+
+            //temporary var ro store the price
+            Double PriceTemp;
+
+            //if the product Id is blank
+            if (productId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The product Id may not be blank : ";
+            }
+            //if the product Id is greater than 6 characters
+            if (productId.Length > 8)
+            {
+                //record the error
+                Error = Error + "The product Id must be less than 8 characters : ";
+            }
+            try
+            {
+                PriceTemp = Double.Parse(price);
+                //is the price a positive number
+                if (price.Length <= 0)
+                {
+                    //record the error
+                    Error = Error + "The price may not be 0 or less than 0 : ";
+                }
+                //if the price is too high
+                if (price.Length > 100000)
+                {
+                    //record the error
+                    Error = Error + "The price is too high : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The price should be a number : ";
+            }
+            //is quantity blank
+            if (quantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The quantity may not be blank : ";
+            }
+            //if the quantity is too long
+            if (quantity.Length > 4)
+            {
+                //record the error
+                Error = Error + "The quantity must be less than 4 characters : ";
+            }
+            //return any error messages
+            return Error;
         }
+
     }
 }
