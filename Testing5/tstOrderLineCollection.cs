@@ -34,18 +34,7 @@ namespace Testing5
             //test if values are the same
             Assert.AreEqual(AllOrderLines.OrderLineList, TestList);
         }
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            //instance of class
-            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-            //test data
-            Int32 SomeCount = 0;
-            //assign data to property
-            AllOrderLines.Count = SomeCount;
-            //test if values are the same
-            Assert.AreEqual(AllOrderLines.Count, SomeCount);
-        }
+  
         [TestMethod]
         public void ThisOrderLinePropertyOK()
         {
@@ -172,7 +161,7 @@ namespace Testing5
             //find the record
             AllOrderLines.ThisOrderLine.Find(PrimaryKey);
             //delete the record
-            //AllOrders.Delete();
+            AllOrderLines.Delete();
             //now find the record
             Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
             //test to see that the record was not found

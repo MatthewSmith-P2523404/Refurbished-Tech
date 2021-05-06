@@ -101,11 +101,11 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The product Id may not be blank : ";
             }
-            //if the product Id is greater than 6 characters
-            if (productId.Length > 8)
+            //if the product Id is greater than 50 characters
+            if (productId.Length > 50)
             {
                 //record the error
-                Error = Error + "The product Id must be less than 8 characters : ";
+                Error = Error + "The product Id must be less than 50 characters : ";
             }
             try
             {
